@@ -110,6 +110,17 @@ var _ = {};
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+
+    var uniques = [];
+    var result = [];
+    _.each(array, function(item, index){
+      if(!(uniques[item] === item)){
+        uniques[item] = item;
+        result.push(item);
+      }
+    })
+
+    return result;
   };
 
 
