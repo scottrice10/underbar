@@ -361,6 +361,29 @@ var _ = {};
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
+    var arrayCopy = array.slice();
+    var shuffled = Array(length);
+    
+    for (var index = 0, rand; index < arrayCopy.length; index++) {
+      rand = _.random(0, index);
+
+      if (rand !== index){
+        shuffled[index] = shuffled[rand];
+      }
+
+      shuffled[rand] = arrayCopy[index];
+    }
+
+    return shuffled;
+  };
+
+  // Return a random integer between min and max (inclusive).
+  _.random = function(min, max) {
+    if (max == null) {
+      max = min;
+      min = 0;
+    }
+    return min + Math.floor(Math.random() * (max - min + 1));
   };
 
 
